@@ -1,0 +1,73 @@
+<div class="text-viewer--scroll-container--1iy0Z">
+    <div class="text-viewer--content--3hoqQ">
+        <div class="udlite-heading-xxl text-viewer--main-heading--ZbxZA">
+            Complexity analysis
+        </div>
+        <div class="article-asset--container--3djM8">
+            <div
+                data-purpose="safely-set-inner-html:rich-text-viewer:html"
+                class="article-asset--content--1dAQ9 rich-text-viewer--rich-text-viewer--19N-I"
+            >
+                <p><strong>Solution 1:</strong></p>
+                <p>We put n = length of str</p>
+                <p><strong>Time complexity:</strong> O(n²)</p>
+                <p><strong>Explanation:</strong></p>
+                <p>
+                    The outer loop is repeated n times, the inner loop is
+                    repeated i times, and what's inside the inner loop costs
+                    O(1) because we just compare characters and eventually
+                    return a character
+                </p>
+                <p>Cost of iterations of the outer loop:</p>
+                <p>1st iteration -&gt; i = 0</p>
+                <p>2nd iteration -&gt; i = 1</p>
+                <p>3rd iteration -&gt; i = 2</p>
+                <p>.</p>
+                <p>.</p>
+                <p>nth iteration -&gt; i = n-1</p>
+                <p>
+                    The sum is 0+1+2+...+(n-1), it's the sum of integers from 0
+                    to n-1, which is equal to n(n-1)/2
+                </p>
+                <p>
+                    T(n) = n(n-1)/2 = (n²-n)/2 = n²/2 - n/2, we take the
+                    greatest term, we remove the constant, and we get a time
+                    complexity of O(n²)
+                </p>
+                <p><strong>Space complexity:</strong> O(1)</p>
+                <p><strong>Explanation:</strong></p>
+                <p>
+                    We're just using two integer variables i and j, the extra
+                    space is 2, it's a constant
+                </p>
+                <p>S(n) = 2 = O(1)</p>
+                <p><br /></p>
+                <p><strong>Solution 2:</strong></p>
+                <p>We put n = length of str</p>
+                <p><strong>Explanation:</strong></p>
+                <p>
+                    The loop is traversing characters of str, so it does n
+                    iterations, and at each iteration, we are searching for a
+                    key in the hash table and eventually inserting a value. And
+                    in a hash table, inserting, searching, and removing have an
+                    O(1) cost in average, so:
+                </p>
+                <p>T(n) = n*O(1) = O(n)</p>
+                <p><strong>Space complexity:</strong> O(n)</p>
+                <p><strong>Explanation:</strong></p>
+                <p>
+                    In the worst case, every character needs to be inserted in
+                    the hash table, this case happens when each character is
+                    unique and we don't find a repeating character. And we have
+                    n characters, the extra space would be n, so:
+                </p>
+                <p>S(n) = O(n)</p>
+                <p><br /></p>
+                <p>
+                    Note that we can also use a set instead of a hash table, we
+                    get the same time and space complexity
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

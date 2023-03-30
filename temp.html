@@ -1,0 +1,101 @@
+<html>
+    <body>
+        <script>
+            class Tree {
+                constructor(data, left = null, right = null) {
+                    this.data = data;
+                    this.left = left;
+                    this.right = right;
+                }
+            }
+
+            let head = null;
+            function flattenTree(root) {
+                if (root === null) return;
+                else {
+                    flattenTree(root.right);
+                    flattenTree(root.left);
+                    root.left = null;
+                    root.right = head;
+                    head = root;
+                }
+            }
+
+            const left = new Tree(8, new Tree(2), new Tree(4));
+            const right = new Tree(3, new Tree(1), new Tree(6));
+            const root = new Tree(5, left, right);
+
+            // console.log(root);
+
+            debugger;
+            flattenTree(root);
+            console.log(root);
+        </script>
+        <!-- <script>
+            function getSubsequences(str) {
+                let subsequences = [];
+                function rec(str, i, subsequence) {
+                    console.log(str, i, subsequence);
+                    if (i == str.length) {
+                        subsequences.push(subsequence);
+                    } else {
+                        // console.log(subsequence+str[i]);
+                        // console.log(subsequence);
+                        rec(str, i + 1, subsequence + str[i]);
+                        console.log('--------------------------------');
+                        rec(str, i + 1, subsequence);
+                    }
+                }
+                rec(str, 0, '');
+                return subsequences;
+            }
+
+            getSubsequences('abcde');
+        </script> -->
+        <!-- <script>
+            // const a = [[2,3,4,5,3], [1,2,3,5,72], [32,43,54,35,13], [22,23,4,5,53], [111,3,4,5,999], [999,0,42,53,99], [222,333,42,53,1299]];
+
+            // const n = a.length;
+            // const m = a[0].length;
+
+            // let dp = [...Array(n)].map(row => [...Array(m)].map(x => 0));
+
+            // console.table(a);
+
+            // console.log('m' , m);
+            // console.log('n' , n);
+
+            // console.table(dp);
+
+            // console.log(a[5][0]);
+            // console.log(a[5]);
+
+            function canJump(arr, i = 0) {
+                console.log(`i ==> ${i}`);
+                if (i == arr.length - 1) {
+                    console.log(`${i} == ${arr.length - 1} is True`);
+                    return true;
+                }
+                console.log(`arr[${i}] ==> `, arr[i]);
+                for (let j = 1; j <= arr[i]; j++) {
+                    console.log(
+                        `${j} <= ${arr[i]}  /  i[${i}]+j[${j}] = ${i + j}`
+                    );
+                    if (canJump(arr, i + j)) {
+                        console.log(`[${i}] is True`);
+                        return true;
+                    }
+                }
+                console.log(`[${i}] is False`);
+                return false;
+            }
+
+            const a1 = [3, 0, 2, 0, 0, 1, 4, 3];
+            const a2 = [3, 0, 2, 0, 2, 1, 4, 3];
+
+            console.log('a1', a1.length, canJump(a1));
+            // console.log('--------------------------------------------------');
+            //console.log('a2', a2.length, canJump(a2));
+        </script> -->
+    </body>
+</html>

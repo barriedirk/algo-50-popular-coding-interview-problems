@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Temp</title>
+    </head>
+    <body>
+        <script>
+            // function coinChangeRec(amount, coins) {
+            //     if (amount == 0) return 0;
+            //     let minCoins = Infinity;
+            //     for (let coin of coins) {
+            //         if (amount - coin >= 0)
+            //             minCoins = Math.min(
+            //                 minCoins,
+            //                 1 + coinChangeRec(amount - coin, coins)
+            //             );
+            //     }
+            //     return minCoins;
+            // }
+
+            // function coinChange(amount, coins) {
+            //     let minCoins = coinChangeRec(amount, coins);
+            //     return minCoins == Infinity ? -1 : minCoins;
+            // }
+
+            function coinChange(amount, coins) {
+                let nbCoinsArr = [...Array(amount + 1)].map((x) => Infinity);
+                nbCoinsArr[0] = 0;
+                for (let i = 1; i < amount + 1; i++) {
+                    let minCoins = Infinity;
+                    for (let coin of coins) {
+                        if (i - coin >= 0)
+                            minCoins = Math.min(
+                                minCoins,
+                                1 + nbCoinsArr[i - coin]
+                            );
+                    }
+                    nbCoinsArr[i] = minCoins;
+                }
+                return nbCoinsArr[amount] == Infinity ? -1 : nbCoinsArr[amount];
+            }
+
+            const changes = coinChange(39, [2, 3, 9]);
+            console.log(changes);
+        </script>
+    </body>
+</html>
